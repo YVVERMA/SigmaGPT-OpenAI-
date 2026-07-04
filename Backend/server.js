@@ -1,6 +1,7 @@
 // import "dotenv/config";
 // import { GoogleGenAI } from "@google/genai";
 
+
 // const ai = new GoogleGenAI({
 //   apiKey: process.env.GEMINI_API_KEY,
 // });
@@ -12,10 +13,10 @@
 
 // console.log(response.text);
 
-
 import express from "express";
 import "dotenv/config";
 import cors from "cors";
+import mongoose from "mongoose";
 import { GoogleGenAI } from "@google/genai";
 
 const app = express();
@@ -28,23 +29,35 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
-app.post("/test", async (req, res) => {
+// app.post("/test", async (req, res) => {
+//   try {
+//     const { message } = req.body;
+
+//     const response = await ai.models.generateContent({
+//       model: "gemini-2.5-flash",
+//       contents: message,
+//     });
+
+//     res.send(response.text);
+
+//   } catch (err) {
+  //     console.error(err);
+  //     res.status(500).send(err.message);
+  //   }
+  // });
+  
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+    connectDB();
+});
+
+const connectDB = async () => {
   try {
-    const { message } = req.body;
-
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: message,
-    });
-
-    res.send(response.text);
-
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected to Database!");
   } catch (err) {
-    console.error(err);
-    res.status(500).send(err.message);
+    console.log("Failed to connect with Database");
   }
-});
+};
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+

@@ -42,11 +42,12 @@ app.listen(PORT, () => {
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(process.env.MONGODB_URI);  
     console.log("✅ Connected to Database!");
   } catch (err) {
     console.error("❌ Failed to connect with Database");
     console.error(err);
-    process.exit(1);
-  }
+    process.exit(1); 
+  } 
 };
+ 

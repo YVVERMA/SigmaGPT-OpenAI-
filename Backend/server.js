@@ -18,7 +18,7 @@ const ai = new GoogleGenAI({
 });
 
 // app.post("/test", async (req, res) => {
-//   try {
+//   try { 
 //     const { message } = req.body;
 
 //     const response = await ai.models.generateContent({

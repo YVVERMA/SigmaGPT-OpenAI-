@@ -32,6 +32,7 @@ export function MyContextProvider({ children }) {
       }
 
       const data = await response.json();
+
       setThreads(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(
@@ -63,6 +64,7 @@ export function MyContextProvider({ children }) {
       }
 
       const data = await response.json();
+
       setMessages(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(
@@ -90,6 +92,7 @@ export function MyContextProvider({ children }) {
 
       setActiveThreadId(threadId);
 
+      // Display the user's message immediately
       setMessages((current) => [
         ...current,
         {
@@ -125,6 +128,7 @@ export function MyContextProvider({ children }) {
           throw new Error("The AI returned an empty response.");
         }
 
+        // Display the AI response
         setMessages((current) => [
           ...current,
           {
@@ -134,6 +138,7 @@ export function MyContextProvider({ children }) {
           },
         ]);
 
+        // Refresh conversation history
         await refreshThreads();
       } catch (err) {
         setError(

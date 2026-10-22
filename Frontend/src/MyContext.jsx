@@ -1,4 +1,4 @@
-```jsx
+jsx
 import {
   createContext,
   useCallback,
@@ -221,4 +221,4 @@ export function MyContextProvider({ children }) {
     </MyContext.Provider>
   );
 }
-```0
+

@@ -14,7 +14,7 @@ const getOpenAIAPIResponse = async (message) => {
 
     return response.text;
   } catch (err) {
-    console.error(err);
+    console.error("Gemini API Error:", err);
     throw err;
   }
 };

@@ -1,0 +1,431 @@
+/* =========================================
+   MAIN CHAT WINDOW
+========================================= */
+
+.chat-window {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  background-color: #212121;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.chat-header {
+  height: 62px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #e6e6e6;
+
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.header-brand i {
+  color: #858585;
+  font-size: 10px;
+}
+
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #8b8b8b;
+  font-size: 11px;
+}
+
+.header-status span {
+  width: 6px;
+  height: 6px;
+
+  background-color: #10a37f;
+  border-radius: 50%;
+}
+
+/* =========================================
+   CONVERSATION AREA
+========================================= */
+
+.conversation {
+  flex: 1;
+  min-height: 0;
+
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.conversation--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   WELCOME SCREEN
+========================================= */
+
+.welcome {
+  width: min(680px, calc(100% - 40px));
+
+  margin: auto;
+  padding: 25px 0 42px;
+}
+
+.welcome-mark {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 21px;
+
+  color: white;
+  background: linear-gradient(135deg, #10a37f, #087b67);
+
+  border-radius: 16px;
+
+  font-size: 20px;
+
+  box-shadow: 0 8px 28px #10a37f20;
+}
+
+.welcome h1 {
+  margin: 0;
+
+  color: #f2f2f2;
+
+  text-align: center;
+
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 650;
+  letter-spacing: -1.2px;
+  line-height: 1.25;
+}
+
+.welcome > p {
+  max-width: 450px;
+
+  margin: 12px auto 30px;
+
+  color: #929292;
+
+  text-align: center;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   SUGGESTION CARDS
+========================================= */
+
+.suggestion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.suggestion-card {
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 16px;
+
+  background-color: #252525;
+  border: 1px solid #383838;
+  border-radius: 13px;
+
+  text-align: left;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.suggestion-card:hover {
+  background-color: #2b2b2b;
+  border-color: #515151;
+
+  transform: translateY(-1px);
+}
+
+.suggestion-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  color: #b8e6d9;
+  background-color: #343434;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+}
+
+.suggestion-card > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.suggestion-card strong {
+  color: #e5e5e5;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.suggestion-card small {
+  color: #8f8f8f;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.suggestion-arrow {
+  margin-top: 2px;
+
+  color: #707070;
+  font-size: 10px;
+}
+
+/* =========================================
+   MESSAGE LIST
+========================================= */
+
+.messages-list {
+  padding: 8px 0 22px;
+}
+
+/* =========================================
+   MESSAGE INPUT AREA
+========================================= */
+
+.composer-area {
+  flex-shrink: 0;
+
+  padding: 12px 22px 16px;
+
+  background: linear-gradient(
+    180deg,
+    #21212100,
+    #212121 18%
+  );
+}
+
+.composer {
+  width: min(790px, 100%);
+
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+
+  margin: 0 auto;
+  padding: 12px 12px 12px 18px;
+
+  background-color: #2f2f2f;
+  border: 1px solid #454545;
+  border-radius: 17px;
+
+  box-shadow: 0 8px 30px #0002;
+
+  transition: border-color 0.2s ease;
+}
+
+.composer:focus-within {
+  border-color: #5b5b5b;
+}
+
+.composer textarea {
+  display: block;
+
+  flex: 1;
+  width: 100%;
+  max-height: 180px;
+
+  padding: 3px 0;
+
+  color: #efefef;
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  resize: none;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.composer textarea::placeholder {
+  color: #888;
+}
+
+/* =========================================
+   SEND BUTTON
+========================================= */
+
+.send-button {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  color: white;
+  background-color: #10a37f;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #0d916f;
+  transform: translateY(-1px);
+}
+
+.send-button:disabled {
+  color: #858585;
+  background-color: #414141;
+
+  cursor: not-allowed;
+}
+
+/* =========================================
+   FOOTER HINT
+========================================= */
+
+.composer-hint {
+  width: min(790px, 100%);
+
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin: 10px auto 0;
+
+  color: #777;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.composer-hint span:last-child {
+  text-align: right;
+}
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.error-banner {
+  width: min(790px, calc(100% - 44px));
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin: 0 auto 8px;
+  padding: 10px 12px;
+
+  color: #ffcaca;
+  background-color: #3a2424;
+
+  border: 1px solid #754343;
+  border-radius: 9px;
+
+  font-size: 12px;
+}
+
+.error-banner button {
+  margin-left: auto;
+
+  color: inherit;
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
+/* =========================================
+   TABLET AND MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+  .chat-header {
+    padding: 0 16px 0 65px;
+  }
+
+  .header-status {
+    display: none;
+  }
+
+  .composer-area {
+    padding: 10px 12px 12px;
+  }
+
+  .composer-hint {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 500px) {
+  .suggestion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome {
+    padding-top: 18px;
+  }
+
+  .welcome h1 {
+    font-size: 26px;
+  }
+
+  .suggestion-card {
+    padding: 12px;
+  }
+
+  .composer-hint span:last-child {
+    display: none;
+  }
+}

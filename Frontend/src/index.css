@@ -1,0 +1,32 @@
+/* Global scrollbar styling */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4b4b4b transparent;
+}
+
+/* Chrome, Edge and Safari */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #454545;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #606060;
+}
+
+/* Text selection */
+
+::selection {
+  background: #10a37f55;
+}

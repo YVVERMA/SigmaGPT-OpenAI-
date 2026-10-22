@@ -25,7 +25,6 @@ const ai = new GoogleGenAI({
 //       model: "gemini-2.5-flash",
 //       contents: message,
 //     });
-
 //     res.send(response.text);
 
 //   } catch (err) {

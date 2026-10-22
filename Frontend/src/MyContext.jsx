@@ -1,3 +1,4 @@
+```jsx
 import {
   createContext,
   useCallback,
@@ -7,9 +8,12 @@ import {
 
 export const MyContext = createContext(null);
 
-export const API_BASE =
-  import.meta.env.VITE_API_BASE_URL ||
-  "http://localhost:8080/api";
+// Backend URL configuration
+const BACKEND_URL = import.meta.env.VITE_API_BASE_URL;
+
+export const API_BASE = BACKEND_URL
+  ? `${BACKEND_URL.replace(/\/+$/, "")}/api`
+  : "http://localhost:8080/api";
 
 export function MyContextProvider({ children }) {
   const [threads, setThreads] = useState([]);
@@ -28,12 +32,10 @@ export function MyContextProvider({ children }) {
       }
 
       const data = await response.json();
-
       setThreads(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(
-        err.message ||
-          "Cannot connect to the backend server."
+        err.message || "Cannot connect to the backend server."
       );
     }
   }, []);
@@ -61,7 +63,6 @@ export function MyContextProvider({ children }) {
       }
 
       const data = await response.json();
-
       setMessages(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(
@@ -185,6 +186,7 @@ export function MyContextProvider({ children }) {
     [activeThreadId, startNewChat]
   );
 
+  // Context value
   const value = useMemo(
     () => ({
       threads,
@@ -219,3 +221,4 @@ export function MyContextProvider({ children }) {
     </MyContext.Provider>
   );
 }
+```0
